@@ -1,0 +1,710 @@
+Linux File System:-
+
+/ ==> Parent Directory or parent folder or parent partition or root partition
+
+  * it contain Service defined data + user defined data
+  * 19 default directory
+  * 17 Directory + 2 user's home account  
+  * 17 Directory = Service defined data( to operate os)			       
+  * 02 Directory = User defined data ( reserved for user home account)
+  * 1 directory is for super user (root)
+  * 1 directory is for all users (other than root )
+  * /root <=== root <=== private place
+  * /home <=== rajeev <=== /home/rajeev/ <=== private place
+  * Note:
+  	# / - top level directory or main directory or parent directory
+  	# /root - Root's home directory or super user home directory or super user home account
+  	# root - super user login name
+  	# /home/ashu - home directory of any normal user
+  	# deepak - deepak here is user name
+  	# /movie - After the os intallation we have created one more directory for data storage on 
+  		   public place.
+  	# /move/lalkila - we have sub directory inside of /movie directory.
+  	# [root@localhost ~]# 
+  				- /root { tilled sign}
+  	    			- ls /root = ls = ls ~
+  	    			- # root user
+  	# [deepak@localhost ~]$ - 
+  				- /home/deepak/ { tilled sign}
+  				- $ normal user 
+  	
+  
+******************************************************************************************************
+Types of place for data creation ==>
+	* 1. Personal home account or Home directory or Private Place => 
+			      Every users have default have		      
+			      right of data creation in their home account. 
+	* 2. Public place ==> Except of user's home directory all directory will count in public
+	                      place under the / partition or directory.
+	* Note: By default super user have right of data creation on any place but norma users have 		        right only in their home account except of their home account they will work as per 	            defined permission on every directory.
+
+******************************************************************************************************
+Data creation Rules ==>
+	* By default super user can create files and directory on any place.
+
+******************************************************************************************************
+Type of command prompt ==>
+	*1. Super user 
+		- root (root = root user name)
+		- [root@localhost ~]#
+	*2. Normal user
+		- deepak ( deepak = normal user name)
+	* localhost 
+		- machine name or hostname (it is changable)
+	* ~ 
+		- Tiled symbol or present working directory ( show you are sitting in home account)
+	* # 
+		- Previledged Mode ( 100% power/permission)
+	* $ 
+		- Non Previldeged Mode ( 20% power/permission)
+
+******************************************************************************************************
+Must know commands of Linux ==>
+
+cat tac wc tail head grep egrep fgrep cut awk sort uniq locate find tar vi
+
+*****************************************************************************************************
+Basic command of file/folder creation ==>
+	
+	1. pwd - present working directory
+		- to check present working directory
+		
+	2. ls  - list
+		- to check data listing
+		- ls /data ( to list all the file and folder of data directory)
+		- Attribute=>
+			ls -R 
+			      * To list all the file and folder recursively means also include sub
+			        directory or nested directory or file
+			      * ls -R /data ( for listing all the sub file and sub folder of 						      directory data)
+				
+		
+	3. touch - to create any blank file on any place
+		  - touch <file name> ( for single file creation)
+		  - touch <file name1> <file name2> ( for multiple file creation)
+		  
+		  - Attribute=>
+		  	touch tcs{1,2,3} ( for creating multiple file name tcs1,tcs2,tcs3)
+		  	touch ibm{1..5} ( for creating five file) 
+		  			(.. means up to this)
+		  	touch redhat{0..10..2} ( for creating multiple file using loop)
+		  			       ( start..stop..step )
+		  	touch redhat{1..5}.txt ( for creating multiple file with extention)
+		  	touch /tmp/my-public-data/redhat{1..5} ( for creating mulitiple file on 								other place )
+		  	touch ./ ( for creating file in your current location)
+		  	         ( ./ means your current location)
+		  	touch {amit,sumit} == touch amit sumit
+		  	
+		  - Attribute for timestamp(access,modify,change,birth) =>
+		  	* stat <filename> -
+		  				(to list all the timestamp)
+		  	* touch -a <filename> -
+		  				( to change access time)
+		  	* touch -m <filename> -
+		  				( to change modify time)
+		  	* touch <filename> -
+		  				( to change all timestamp of file)
+		  		
+	
+	4. mkdir - make directory
+		  - to create any directory
+		  - mkdir <folder name> ( for creating single file)
+		  - mkdir <folder name1> <folder name2> ( for creating multiple folder)
+		  - Attribute=>
+		  	mkdir -p ->
+		  		* for creating nested or to create parent directory
+		  		* mkdir -p /data/a/a1 ( for creating directory within directory)
+		  	mkdir old\ move\ songs ->
+		  	mkdir 'old move songs' ->
+		  	mkdir "old move songs" ->
+		  		* to create folder name with space
+		
+	5. cd - change directory
+	       - to change the current directory
+	       - cd <place name> ( to go into any directory)
+	       - cd /home ( to got to home directory)
+	       - cd .. ( to go back to one level back)
+	       - cd ../.. ( to go back to two level back)
+	       - cd / ( to go to top level directory)
+	       - cd ( to go to your home directory either root or normal user)
+	       - cd - ( to go back to previous directory of the cd command)
+	       - cd . ( current working directory)
+	       	      ( to go nowhere other then your current location)
+	       		
+	6. tree - to show hierarchy of folder
+		- tree <directory name> ( to show hierarchy of any directory)
+		- tree /data ( to show nested folder of data in tree format)
+	
+	7. history - 
+		   - to show all history of all the previously typed command
+	8. date - to check current date
+	9. cal - to show calendar of current month
+	10. echo - to print message on terminal
+		 - echo "hello how are you"
+	11. who - to check which user in currently login.
+	12. df -h = to check size/used/available/ space of drives
+	13. history - to check previous history of typed commands.
+	14. history -c - to clear previous typed history of the commands.
+		 
+	
+
+*****************************************************************************************************
+
+Type of path ==>
+	
+	1. Relative path -
+			 - when you give directory name again and again 
+			 - cd data , ls data , cd a2, ls a2 , cd a1 
+	2. Absolute path -
+			 - when you only give directory name
+			 - cd data/a2/a1
+		
+*****************************************************************************************************
+
+Basic Linux command to read any file==>
+	
+	1. cat - concatination
+	       - to read content of any file
+	       - cat <filename with directory>
+	       - cat /etc/passwd
+	       - Attribute
+	       		- cat -n <filename> -
+	       					(read file with line number)
+	       		- cat -b <filename> -
+	       					(read file with excluding line number on blank line)
+	       		- tac <filename> -
+	       					(read file in reverse order bottom to top)
+	       					( no option work on tac command)
+	       		- cat <filename1> <filename2> -
+	       					( to read multiple file)
+	       		- cat > <filename> -
+	       					( to write in a file using redirection operator)
+	       		- cat <filename1> <filename2> > <filename3> -
+	       					( to append content of two file into another file)
+	2. wc - word count
+	      - it is used to count number of line, number of characters and number of word available
+	      	in any file or from any command outputs.
+	      - wc /etc/passwd -
+	      			to show all line,word,character in passwd file.
+	      - wc <options> <filename>
+	      Example:-
+	        wc   -l	 /etc/passwd -
+	        		to show only line in passwd file
+	        wc   -w	 /etc/passwd -
+	        		to show only word in passwd file
+	        wc   -c	 /etc/passwd -
+	        		to show only character in passwd file
+	        wc   -l /etc/passd  /etc/crontab -
+	        		to show only character from multiple file.
+	        		
+	3. tee - same as > output symbol but it show what it is storing in the file.
+		- but it run with the help of | pipe symbol
+		Example:-
+			- lsblk | tee Downloads/file1
+			- date | tee Downloads/info
+			
+	4. tee -a
+		- same as >> double greater then symbol but it show what it is storing in the file.
+		- it will give you command output as well plus it will store into files.
+		- but it also run with the help of | pipe symbol
+		Example:-
+			- lscpu | head -n 3 | tee -a /Downloads/file1
+			- cal | tee -a Downloads/info
+	
+	5. head 
+		- it display by default 10 lines from top of any file or of any command output.
+		- head <options> <filename>
+			or
+		  <command> | tail <options> 
+		Example:-
+			- head /etc/passwd ( to show top 10 line of a file)
+			- head -n 5 /etc/passwd ( to show only 5 top line of a file)
+			- head -5 /etc/passwd ; tail -5 /etc/passwd ( 5 line from top and bottom)
+			
+		
+		
+	5. tail 
+		- it display by default 10 lines from bottom of any file or of any command output.
+		- tail <options> <filename>
+			or
+		  <command> | tail <options> 
+		Example:-
+			- tail /etc/passwd ( to show bottom 10 line of a file)
+			- tail -n 5 /etc/passwd ( to show only 5 bottom line of a file)
+			- tail -1 /etc/passwd ; head -1 /etc/passwd ( 1 line from top and bottom)
+		
+	6. tail -f	
+		  - to read/live stream log file live in linux
+		  Examplle:-
+		  	   - tail -f /var/log/secure
+		  	   - tail -f /var/log/secure /var/log/messages
+		  
+	       
+*****************************************************************************************************
+
+Basic command Symbols of Linux ==>
+	
+	1. ; 
+	     - semi colon symbol
+	     - it is used to run more then one command in a sequencing order.
+	     Example:-
+	     - date ; cal - to run both command date and calendar
+	     - useradd love ; passwd love - to run both command
+	     - mkdir /redhat ; touch /redhat/abc - to run both command
+	     - date ; cal ; date ; echo "hello" - to run multiple command in one go.
+	     					- it will skip the wrong command and execute next one
+	     
+	2. | 
+	     - pipe symbol
+	     - it is used to add command multiple command to gain a specific final output.
+	     - command-1 | command-2 | command-3 => final output
+	     - command-2 will work on command-1 output and command-3 work on command-2 output.
+	     Example:-
+	     - cat /etc/passwd | wc -l
+	     - lscpu | cat -n
+	     - lsblk | cat -n
+	     - lscpu | wc -l
+	     - lscpu | cat -n | head -n 3
+	     - cat -n /etc/passwd | head -n 5
+	     
+	3. >
+	     - Redirection/output symbol
+	     - to store/redirect output of any command into any file but overwrite the new file.
+	     - <command> > <filename>
+	     Example:-
+	     - cat -n /etc/passwd | head -n 5 > Downloads/myfile1
+	     						( but it overwrite the content of the file)
+	     
+	4. >>
+		- this symbol used to append the output in your file.(not overwrite)
+	     	Example:-
+	     	- cat -n /etc/crontab | head -n 5 >> Downloads/myfile1
+	     	- who >> Downloads/myfile2
+	     	- date >> Downloads/myfile2
+	     	- echo "this is my final report" >> Downloads/newfile2
+	     	
+	5. <
+		-Input symbol
+		- this symbol used to get input from a file.
+		Example:-
+			- cat < Downloads/file1
+			- cat < Downloads/file1 > Downloads/file5
+		  
+*****************************************************************************************************
+
+Basic technique for file manipulation:-
+
+1. how to delete content of a file
+	Example:-
+		- > Downloads/myfile2
+2. how to delete a file forcefully
+	Example:-
+		- rm -f Downloads/myfile2
+3. how to create and write in a file using echo
+	Example:-
+		- echo "welcome" > Downloads/myfile2
+4. how to save content of two file into 3rd file
+	Example:-
+		- echo "this is file1" > Downloads/file1
+		  echo "this is file2" > Downloads/file2
+		  cat Downloads/file1 Downloads/file2 > file3
+		  cat Downloads/file3
+5. how to save content of 2 existing and one new file into 4th file
+	Example:-
+		- echo "this is file1" > Downloads/file1
+		  echo "this is file2" > Downloads/file2
+		  cat Downloads/file1 Downloads/file2 > file3
+		  echo "this is file3" > Downloads/file4
+		  cat Downloads/file3 >> Downloads/file4
+		  cat Downloads/file4
+6. show use of symbol ; | and command tee on a file
+	Example:-
+		- date | tee /Downloads/info ; cal | tee -a /Download/info
+7. how to print line 31 to 35 from middle of a file.
+	Example:- cat -n /etc/passwd | head -n 35 | tail -n 5
+	
+8. how to live stream/read multiple file in linux
+	Example:- tail -f /var/log/messages /var/log/secure
+
+*****************************************************************************************************
+
+Some Advance commands of Linux ==>
+
+1. sed
+	- By using sed command we can perform these types of operations.
+	  * print any line number top or bottom doesn't matter.
+	  * find and replace a line
+	  * delete a line
+	  * before the line number we can append anything.
+	  * after the line number we can append anything.
+	
+	#############################################################################################
+	How we can print line numbers using sed command. p - for line number pointer
+	
+	- we have to use '' single quotation mark to run the sed commands.
+	  * sed 'action'
+	  * command-name | sed 'action'
+	
+	- how we can print the line number using the sed command.
+		Example:- sed '1p' /etc/passwd (will not work for numeric value)
+			- sed -n '1p' /etc/passwd ( work for numeric value)
+			
+	- how we can print the line from 1 and 5 using the sed command.
+		Example:- sed -n '1p;5p' /etc/passwd
+		
+	- how we can print the line from 1 to 5 using the sed command.
+		Example:- sed -n '1,5p' /etc/passwd
+		
+	- how we can print the last line using the sed command.
+		Example:- sed -n '$p' /etc/passwd	($- this symbol indicate last point)
+	
+	- how we can print the line first and last using the sed command.
+		Example:- sed -n '1p;$p' /etc/passwd	
+	
+	- how we can print the line from 1 to 5 and 11 to 15 and 21,25 and 31 to 35 using the sed 			command.
+		Example:- sed -n '1,5p;11,15p;21p;25p;31,35p' /etc/passwd
+			- cat -n /etc/passwd | sed -n '1,5p;11,15p;21p;25p;31,35p'
+			
+			Note: 
+				* $ = last
+				* ; = and
+				* , = to
+	
+	- how we can print the line from 1 to 5 and 11 to 15 and 21,25 and 31 to 35 using the sed 			command and also store this line in a info file.
+		Example:- sed -n '1,5p;11,15p;21p;25p;31,35p' /etc/passwd > Downloads/info
+			- cat -n /etc/passwd | sed -n '1,5p;11,15p;21p;25p;31,35p' > Downloads/info
+	
+	- how we can print the swap line from lsblk command using the sed command
+		Example:-
+			-Normal- lsblk |cat -n | head -n -4 | tail -n -1
+			-sed- lsblk | cat -n | sed -n '4p'
+			
+	#############################################################################################
+	How we can perform find and replace operation into any file. s - for replacing line pointer
+	
+	- how to replace root word from every line in /etc/passwd file where root is word is written 				one time.
+		Example:-
+			- sed 's/root/noroot/' /etc/passwd 
+			where (s/root/noroot = all line/replace word/with new word)
+	
+	- how to replace every root word from every line in /etc/passwd file where root is word is 				multiple times.
+		Example:-
+			- sed 's/root/noroot/g' /etc/passwd
+			- sed 's/root/noroot/g' /etc/passwd | grep noroot
+			where (s/root/noroot/g = all line/replace word/with new word/globally)
+			 
+	- how to replace every root word from line number 1 of /etc/passwd file.
+		Example:-
+			- sed '1s/root/noroot/g' /etc/passwd | grep noroot
+			where (1s = line number 1)
+	
+	- how to replace every root word from line number 1 to 15 of /etc/passwd file.
+		Example:-
+			- sed '1,15s/root/noroot/g' /etc/passwd | grep noroot
+			where (1,15s = 1 to 15 line number)
+	
+	- how to replace every root word from line number 1 to 15 by ignoring case sensitive word.
+		Example:-
+			- sed '1,15s/root/noroot/gi' /etc/passwd | grep noroot
+			where (1,15s = 1 to 15 line number)
+			      (i = ignore case sensitive)
+	
+	
+	- Note:
+		* sed 's/root/newroot/2' /etc/passwd
+			where (2 = change only word 2 of line)
+		* sed 's/root/newroot/2g' /etc/passwd
+			where (2g = change all word after word 1)
+	
+	- how to replace word using cat/grep command with sed command
+		Example:-
+			-cat /etc/passwd | grep root | sed 's/root/noroot/g'
+			-cat /etc/passwd | grep root | sed 's/root/noroot/gi'
+			-cat /etc/passwd | grep root | sed 's/root/noroot/2'
+			-cat /etc/passwd | grep root | sed 's/root/noroot/2g'
+			-cat /etc/passwd | grep root | sed 's/root/noroot/2gi'
+			-cat /etc/passwd | grep root | sed '2s/root/noroot/g'
+			-cat /etc/passwd | grep root | sed '1,5s/root/noroot/g'
+			-cat /etc/passwd | grep root | sed '1,5s/root/noroot/g' | grep noroot
+			-
+			
+	- how to replace multiple distint word using sed command
+		Example:-
+			-> replacing root with noroot and shutdown with login
+			-cat /etc/passwd | grep root | sed 's/root/noroot/g;s/operator/network/g'
+		-> other method for multiple replacing of word
+		-cat /etc/passwd |grep root | sed -e 's/root/noroot/g' -e 's/operator/network/g'
+	
+	- how to replace word and store it in the original file
+		Example:-
+			- sed -i 's/root/noroot/g' /etc/passwd
+			where ( i = for insert in the original file)
+	
+
+	- how to comment a line using a sed command
+		Example:-
+			- sed '5s/^/#' /etc/passwd | grep ^#
+	- how to uncomment a line using a sed command
+		Example:-
+			- sed '5s/^#//' /etc/passwd | grep ^#
+
+
+	#############################################################################################
+	How to delete a line using sed command
+	
+	- how to delete a line number 5 using sed command from /etc/passwd file
+		Example:- cat -n /etc/passwd | sed '5d' | head
+	
+	- how to delete a line number from 5 to 10 using sed command 
+		Example:- cat -n /etc/passwd | sed '5,10d' | head
+	
+	- how to not to delete line number from 5 to 10 using sed command
+		Example:- cat -n /etc/passwd | sed '5,10!d' | head
+	
+	- how to delete all the line number except 7 using sed command
+		Example:- cat -n /etc/passwd | sed '7!d' | head
+	
+	- how to delete all the line number except 7 in the original file using sed command
+		Example:- cat -n /etc/passwd | sed -i '7!d' |head
+	
+	#############################################################################################
+	How to append anything before the particular line number
+	
+	- how to append word root after line number 5 of a file using sed command
+		Example:- sed '5i root' /etc/passwd
+			where (i = before the line number)
+	
+	- how to append word root before line number 5 of a file using sed command
+		Example:- sed '5a root' /etc/passwd
+			where (a = after the line number
+
+2. cut
+	- cut command basically used to cut any records using charactesrs and fields from any file 		  ,from any commands output
+	- cut <options> <filename>
+		or
+	- command-name | cut <options>
+	- some options -
+		-c = cut by characters
+		-f = cut by fileds ==> we can not use this option without define the delimeter symbol
+		-d = define the delimeter symbol , it can be anything.
+		
+	#############################################################################################
+	How to cut by characters
+	
+	- how to cut first character of every line of a line using cut command
+		Example:-
+			- cut -c1 /etc/passwd
+	
+	- how to cut 1 to 5 character of every line of a file using cut command
+		Example:- cut -c1-5 /etc/passwd
+			where (c1-5 = 1 to 5 range of characters)
+
+	- how to cut 1 and 3 character of every line of a file using cut command
+		Example:- cut -c1,3 /etc/passwd
+			where (c1,3 = 1 and 3 characters)
+	
+	- how to use cut with head command
+		Example:- head -1 /etc/passwd | cut -c1-6
+		
+	- how to use cut with grep command
+		Example:- lsblk | grep -w sda | cut -c1-3
+	
+	#############################################################################################
+	How to cut by fields
+	
+	- how to cut any word in a line using delimeter using cut command
+		Example:- cut -d':' -f1 /etc/passwd
+			where (-d: = delimeter which tell position for cutting)
+			      (-f1 = for only 1 field/word)
+	- how to cut by fields with other command along with cut command
+		Example:- cat /etc/passwd | head | cut -d: -f1
+		
+	- how to cut multiple fields/word using sed command
+		Example:- cat /etc/passwd | head | cut -d/ -f1,2,4
+		
+	- how to cut from a log file using sed command
+		Example:- cat /var/log/secure | tail -n 5 | cut -d' ' -f1-4
+						or
+			- tail -n 5 /var/log/secure | cut -d' ' -f1-4
+		
+3. awk
+	- used to cut field/word from line where cut command is failed due to space issues.
+	- it is advanced version command awk.
+	- awk <options> <filename>
+		or
+	- <command name> | awk <options>
+	
+	#############################################################################################
+	How to cut by fields
+	
+	- how to cut by fields using awk command
+		Example:-
+			using awk => cat /etc/passwd | head | awk -F':' '{print $1}'
+					where ($1 = 1st field)
+					      (-F = delimeter)	
+			using cut => cat /etc/passwd | head | cut -d':' -f1
+	
+	- how to cut by fields on having space in the fields/words using awk command
+		Example:-
+			- df -h | awk '{print $1,$5}' | column -t
+					where (column -t = for arranging the column fields)
+	- how to cut a specific fields/word from df -h command using awk command
+		Example:- 
+			- df -h | grep sda1 | awk '{print $5}' | awk -F'%' '{print $1}'
+	
+	- how to print only size field from lsblk command using awk command
+		Example:-
+			- lsblk | awk '{print $4}'
+	
+	- how to print your ip from ifconfig command using awk command
+		Example:-
+			- ifconfig | grep -w inet | awk '{print $2}' | sed -n '2p'
+					or
+			- ifconfig | grep -w inet | awk '{print $2}' | tail -2 | OFS='  '
+			  where ( OFS = output field separator)
+	
+	- how to get 1st field from last 5 line of /etc/passwd file using awk command
+		Example:-
+			- tail -n 5 /etc/passwd | awk -F':' '{print $1}'
+	
+	- how to get first inet from ifconfig command change this word to ip address using 		  grep,awk,sed,head command
+		Example:-
+		- ifconfig | grep -w inet | head -1 | awk '{print $1}' | sed 's/inet/ip address/g'
+	
+	#############################################################################################
+
+*****************************************************************************************************
+
+4. grep
+	-
+	
+***************************************************************************************************** 
+
+How to Controll Services or Daemons or Units in Linux os using command ==>
+	
+1. Daemon or Unit or service -
+	
+	* Daemon or unit is a progam which is sue to stop ans start any services in unix/linux based
+	  operatins system
+	* In linux OS every servers or services has it's own Daemon to control it.
+	* We can easily start an stop any services using linux based command without rebooting the 		  machine.
+	* Example:-
+	
+	Server name 		Daemon name
+Already
+Installed- 
+	
+	SSH			sshd
+	crontab			crond
+	NTP 			ntpd or chronyd
+Need to
+install
+first - 
+	DNS			named
+	samba			smb
+	NFS 			nfs-server
+	FTP 			vsftpd
+	http 			httpd
+	
+	* Earlier time(RHEL-6) - Parent Process/Master service ==> INIT ==> PID ==>1
+	* Nowadays (RHEL-7/8) - Parent Process ===> systemd ==> PID ==> 1
+	* Parent/Master service control all the services/process of the os.
+	* services managing command (RHEL-6) ==> service(temporary) , chkconfig(permanent)
+	* services managing command ==> systemctl(temporary,permanent)
+	
+	* RHEL -6 =>
+		Temporary enable service
+		# service daemon action
+		service sshd start/stop/status/restart/reload
+		
+		Permanent enable service
+		# chkconfig daemon actions
+		chkconfig sshd on/off
+	
+	* RHEL 7/8/9 =>
+		Temporary enable service
+		#systemctl action unitname/daemon-name
+		system start/stop/status/restart/reload sshd
+		
+		Permanent enable service
+		#systemctl enable/disable service
+		systemctl enable sshd
+	
+2. systemd -
+	
+	* It was designed to overcome the shortcomings of init. it itself is a background processes 		  which is desinged to start processes in parallel, thus reducing the boot time and 		  computational overhead. 
+	* It has a lot other features as compared to init.
+	
+	* Why there was a need to replace init ?
+	  A init process starts serially i.e., one task starts only after the last task startup was 		  successful and it was loaded in the memory. This often resulted into delayed and long 	  booting time. 
+	* However, systemd was not designed for speed but for getting the things done 		  		  neatly which in turns  avoid all the uneccessory dealy.
+	
+	* Example:-
+		# systemctl 		Actions 	unitname.types
+		
+		Types of unit
+		
+		1. service ==> ssh,ntp,dns...etc
+		2. path ==> printer service (service in queue [FIFO] )
+		3. sockets ==> SCSI & ISCSI or network drive concept ( tunnel between two point for 										giving or resieving service)
+		
+			 
+3. Services Commands -
+	
+	1. pstree - to check all the services from top level
+	   pstree | grep crond - to check crond service in os.
+	   
+	2. pidof systemd - to check pid of systemd service.
+	   pidof crond - to check pid of crond service.
+	   
+	3. systemctl status sshd
+		or
+	   systemctl status sshd.service - to check status of service named sshd ( ssh)
+	
+	4. systemctl is-active sshd - to check temporary status of service named sshd
+	   systemctl is-enabled sshd - to check permanentaly status of service named sshd
+	
+	5. systemctl start sshd - to start a service temporary.
+	   systemctl enable sshd - to start a service permanently
+	   systemctl is-active sshd - to show temporary status of service
+	   systemctl is-enabled sshd - tho show permanent status of service
+	
+	6. systemctl reload sshd - to update new feature in service without stoping it.
+	   systemctl restart sshd - to cleanly stop and start service again with new pid.
+	   
+	7. systemctl is-active sshd crond - to check status of multiple service.
+	   
+	* How to check temporary status about all the services in single command
+	8. systemctl list-units
+		or
+	   systemctl
+	
+	9. systemctl | grep crond
+		or
+	   systemctl | grep crond | column -t - to check service both status with grep command
+	
+	10.systemctl | grep -E 'crond|sshd' - to check multiple service with grep command
+	
+	11.systemctl list-unit-files - to check permanent status only.
+	
+	* How to check how many services are permanently disabled
+	12. systemctl list-unit-files | grep disabled | wc -l
+	
+	* Masked service = the service which is disabled for safety purpose and it will 			   give warning before enabling it.
+	* Unmasked service = the service which can be enabled/disabled without any warning.
+	* masking/unmasking a service is service is only beneficial in disable/stop of service.
+	13. systemctl status firewalld
+	    systemctl mask firewalld - to mask a service for protection
+	    systemctl status firewalld   
+	    systemctl stop firewalled - a warning will be their and it will not allow you stop it.
+	    systemctl unmask firewalld - to unmask a service to start/stop it
+	    				it will allow you stop/start this service.
+
+
+
+
+			 
+	 
+
+  
+  
